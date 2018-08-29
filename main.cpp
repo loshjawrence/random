@@ -143,6 +143,7 @@ int main()
 //}
 
 
+
 //// THIS IS FOR FILE GLOBBING
 //  ../path/*.txt  will grab all txt in path dir
 //  ../path/*/*.txt  will recursively grab all txt in path and its subdirs
@@ -234,6 +235,47 @@ int main()
 //
 
 
+// THIS IS FOR SEARCHING FOR A DIRECTORY prob need to adjust the two logic things in the for loop
+//#include <experimental\filesystem>
+//namespace fs = std::experimental::filesystem;
+//fs::path findDirectory(const std::string directoryOfInterest)
+//{
+//    fs::path currentDirectory = fs::current_path();
+//    // Check up the tree first
+//    while (currentDirectory.stem().generic_string() != directoryOfInterest && !currentDirectory.empty())
+//    {
+//        currentDirectory = currentDirectory.parent_path();
+//    }
+//
+//    // Check if we found it
+//    if (currentDirectory.stem().generic_string() == directoryOfInterest)
+//    {
+//        return currentDirectory;
+//    }
+//    else
+//    {
+//        // Start over looking down the tree, stopping after maxSearchDepth
+//        currentDirectory = fs::current_path();
+//        using fsrdi = fs::recursive_directory_iterator;
+//        for (auto p = fsrdi(currentDirectory); p != fsrdi(); ++p)
+//        {
+//            if (p->path().filename() != directoryOfInterest)
+//            {
+//                p.pop();
+//                continue;
+//            }
+//
+//            if (fs::is_directory(p->path()) && p->path().stem().generic_string() == directoryOfInterest)
+//            {
+//                return *p;
+//            }
+//        }
+//    }
+//    std::cout << "\nCouldn't find the '" << directoryOfInterest << "' directory from " << currentDirectory;
+//    return fs::current_path();
+//}
+//
+//static const std::string exePath = findDirectory("build").append("Data").generic_string();
 
 
 //#define PAGELIMIT 80            // Number of pages to ask for
